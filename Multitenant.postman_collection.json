@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "89852ca4-a3cd-4f2d-a517-2874a957f8fc",
+		"name": "Multitenant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6104479"
+	},
+	"item": [
+		{
+			"name": "Sin Multitenant",
+			"item": [
+				{
+					"name": "GET Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/producto/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/producto/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Borrar producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/producto/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Producto nuevo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Otro producto\",\n    \"price\": 1.75\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/producto/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Editar producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Otro nombre\",\n    \"precio\": 2.45\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/producto/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Con Multitenant",
+			"item": [
+				{
+					"name": "GET Todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/producto/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/producto/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Borrar producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/producto/3",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Producto nuevo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Otro producto\",\n    \"price\": 1.75\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/producto/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Editar producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Otro nombre\",\n    \"precio\": 2.45\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/producto/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"producto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.request.headers.add({ key: 'X-TenantID', value: pm.collectionVariables.get('TenantID') });",
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Gestión Tenant",
+			"item": [
+				{
+					"name": "Nuevo inquilino",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "TenantID",
+			"value": "tenant2",
+			"type": "string"
+		}
+	]
+}
